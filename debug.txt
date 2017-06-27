@@ -1,0 +1,62 @@
+b /net/wujial/py-R-FCN/tools/train_rfcn_alt_opt_5stage.py:363
+b /net/wujial/py-R-FCN/lib/roi_data_layer/minibatch.py:130
+b /net/wujial/py-R-FCN/lib/roi_data_layer/minibatch.py:129
+b /net/wujial/py-R-FCN/lib/fast_rcnn/train.py:142
+./experiments/scripts/test_rfcn3.sh 3 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn_alt_opt_5step_ohem3/resnet50_rfcn_ohem_iter_37000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl
+./experiments/scripts/test_rfcn4.sh 1 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn_alt_opt_5step_ohem4/resnet50_rfcn_ohem_iter_18000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl
+XAUTHORITY=${HOME}/.Xauthority
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/rfcn_alt_opt_5step_ohem/resnet50_rfcn_ohem_iter_30000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl rfcn_alt_opt_5step_ohem
+
+
+./experiments/scripts/test_rfcn.sh 1 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_hard_rfcn/resnet50_rfcn_ohem_iter_30000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl softmax_hard_rfcn
+
+
+rfcn_alt_opt_5step_ohem
+
+
+./experiments/scripts/rfcn_alt_opt_5stage_ohem.sh 0 ResNet-50 pascal_voc
+./experiments/scripts/softmax_rfcn.sh 0 ResNet-50 pascal_voc
+./experiments/scripts/softmax_hard_rfcn.sh 0 ResNet-50 pascal_voc
+./experiments/scripts/softmax_rfcn_weak.sh 2 ResNet-50 pascal_voc
+softmax_weak
+./experiments/scripts/test_rfcn.sh 1 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/soft_rfcn/stage2_rfcn_final.caffemodel /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/soft_rfcn/stage3_rpn_final_proposals.pkl soft_rfcn
+
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn/stage2_rfcn_final.caffemodel /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn/stage3_rpn_final_proposals.pkl softmax_rfcn
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/rfcn_alt_opt_5step_ohem/stage2_rfcn_final.caffemodel /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/rfcn_alt_opt_5step_ohem/stage3_rpn_final_proposals.pkl rfcn_alt_opt_5step_ohem
+
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn/resnet50_rfcn_ohem_iter_30000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl softmax_rfcn
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn_weak/resnet50_rfcn_ohem_iter_30000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl softmax_rfcn_weak
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn_weak_distill/resnet50_rfcn_ohem_iter_30000.caffemodel /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl softmax_rfcn_weak_distill
+
+
+./experiments/scripts/test_rfcn.sh 1 ResNet-50 pascal_voc /data/wujial/py-R-FCN/models/pascal_voc/ResNet-50/soft_no_max_rfcn/resnet50_rfcn_ohem_iter_30000.caffemodel /data/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_test/stage1_rpn_final_proposals.pkl soft_no_max_rfcn
+
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/deconv_softmax_rfcn/resnet50_rfcn_ohem_iter_50000.caffemodel /net/wujial/py-R-FCN/test_final_proposals.pkl deconv_softmax_rfcn
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_rfcn/resnet50_rfcn_ohem_iter_50000.caffemodel /net/wujial/py-R-FCN/test_final_proposals.pkl softmax_rfcn
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/rfcn_alt_opt_5step_ohem/resnet50_rfcn_ohem_iter_50000.caffemodel /net/wujial/py-R-FCN/test_final_proposals.pkl rfcn_alt_opt_5step_ohem
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/softmax_hard_rfcn_god/resnet50_rfcn_ohem_iter_50000.caffemodel /net/wujial/py-R-FCN/test_final_proposals.pkl softmax_hard_rfcn_god
+
+./experiments/scripts/test_rfcn.sh 2 ResNet-50 pascal_voc /net/wujial/py-R-FCN/data/rfcn_models/resnet50_rfcn_final.caffemodel rfcn_alt_opt_5step_ohem
+
+
+
+
+
+
+
+
+
+
+
+
+

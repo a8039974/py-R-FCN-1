@@ -1,0 +1,426 @@
+Called with args:
+Namespace(cfg_file='experiments/cfgs/rfcn_alt_opt_5step_ohem.yml', gpu_id=0, imdb_name='voc_2007_trainval', imdb_test_name='voc_2007_test', model_name='residual_pos_neg_attention_18', net_name='ResNet-50', pretrained_model='/net/wujial/py-R-FCN/data/rfcn_models/resnet50_rfcn_final.caffemodel', set_cfgs=None)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 0 RPN, compute normalization means and stds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 1 R-FCN using RPN proposals, init from ImageNet model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+using lilac
+/net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/residual_pos_neg_attention_18/stage1_rfcn_mask_ohem_solver80k120k.pt
+Init model: /net/wujial/py-R-FCN/data/imagenet_models/ResNet-50-model.caffemodel
+RPN proposals: /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+Using config:
+{'DATA_DIR': '/net/wujial/py-R-FCN/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'rfcn_alt_opt_5step_ohem',
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MODELS_DIR': '/net/wujial/py-R-FCN/models/pascal_voc',
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/net/wujial/py-R-FCN',
+ 'TEST': {'AGNOSTIC': True,
+          'BBOX_REG': True,
+          'HAS_RPN': False,
+          'MAX_SIZE': 1000,
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'rpn',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'SCALES': [400],
+          'SVM': False},
+ 'TRAIN': {'AGNOSTIC': True,
+           'ASPECT_GROUPING': True,
+           'BATCH_SIZE': -1,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': False,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'FG_FRACTION': 0.5,
+           'FG_THRESH': 0.5,
+           'H': 15,
+           'HAS_RPN': False,
+           'IMS_PER_BATCH': 1,
+           'MAX_SIZE': 1000,
+           'PROPOSAL_METHOD': 'rpn',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_NORMALIZE_MEANS': [0.00013977,
+                                   0.00940836,
+                                   -0.02203678,
+                                   -0.03512152],
+           'RPN_NORMALIZE_STDS': [0.11800866,
+                                  0.12171428,
+                                  0.33160738,
+                                  0.43583021],
+           'RPN_NORMALIZE_TARGETS': True,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SAVE_RESULT': 10000,
+           'SCALES': [400],
+           'SNAPSHOT_INFIX': 'stage1',
+           'SNAPSHOT_ITERS': 5000,
+           'USE_FLIPPED': True,
+           'USE_PREFETCH': False,
+           'W': 15,
+           'hidden_size': 8,
+           'mask_num': 25},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: rpn
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /net/wujial/py-R-FCN/data/cache/voc_2007_trainval_gt_roidb.pkl
+loading /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+done
+Preparing training data...
+done
+Output will be saved to `/net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval`
+Filtered 0 roidb entries: 10022 -> 10022
+Computing bounding-box regression targets...
+bbox target means:
+[[  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]]
+[  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]
+bbox target stdevs:
+[[ 0.          0.          0.          0.        ]
+ [ 0.13144468  0.12530918  0.2497036   0.21615053]]
+[ 0.13144468  0.12530918  0.2497036   0.21615053]
+Normalizing targets
+done
+RoiDataLayer: name_to_top: {'Sig_rfcn_mask_label': 6, 'foreverone': 7, 'bbox_inside_weights': 4, 'labels': 2, 'rois': 1, 'bbox_targets': 3, 'bbox_outside_weights': 5, 'data': 0}
+Called with args:
+Namespace(cfg_file='experiments/cfgs/rfcn_alt_opt_5step_ohem.yml', gpu_id=0, imdb_name='voc_2007_trainval', imdb_test_name='voc_2007_test', model_name='residual_pos_neg_attention_18', net_name='ResNet-50', pretrained_model='/net/wujial/py-R-FCN/data/rfcn_models/resnet50_rfcn_final.caffemodel', set_cfgs=None)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 0 RPN, compute normalization means and stds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 1 R-FCN using RPN proposals, init from ImageNet model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+using lilac
+/net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/residual_pos_neg_attention_18/stage1_rfcn_mask_ohem_solver80k120k.pt
+Init model: /net/wujial/py-R-FCN/data/imagenet_models/ResNet-50-model.caffemodel
+RPN proposals: /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+Using config:
+{'DATA_DIR': '/net/wujial/py-R-FCN/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'rfcn_alt_opt_5step_ohem',
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MODELS_DIR': '/net/wujial/py-R-FCN/models/pascal_voc',
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/net/wujial/py-R-FCN',
+ 'TEST': {'AGNOSTIC': True,
+          'BBOX_REG': True,
+          'HAS_RPN': False,
+          'MAX_SIZE': 1000,
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'rpn',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'SCALES': [400],
+          'SVM': False},
+ 'TRAIN': {'AGNOSTIC': True,
+           'ASPECT_GROUPING': True,
+           'BATCH_SIZE': -1,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': False,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'FG_FRACTION': 0.5,
+           'FG_THRESH': 0.5,
+           'H': 15,
+           'HAS_RPN': False,
+           'IMS_PER_BATCH': 1,
+           'MAX_SIZE': 1000,
+           'PROPOSAL_METHOD': 'rpn',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_NORMALIZE_MEANS': [0.00013977,
+                                   0.00940836,
+                                   -0.02203678,
+                                   -0.03512152],
+           'RPN_NORMALIZE_STDS': [0.11800866,
+                                  0.12171428,
+                                  0.33160738,
+                                  0.43583021],
+           'RPN_NORMALIZE_TARGETS': True,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SAVE_RESULT': 10000,
+           'SCALES': [400],
+           'SNAPSHOT_INFIX': 'stage1',
+           'SNAPSHOT_ITERS': 5000,
+           'USE_FLIPPED': True,
+           'USE_PREFETCH': False,
+           'W': 15,
+           'hidden_size': 8,
+           'mask_num': 25},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: rpn
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /net/wujial/py-R-FCN/data/cache/voc_2007_trainval_gt_roidb.pkl
+loading /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+done
+Preparing training data...
+done
+Output will be saved to `/net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval`
+Filtered 0 roidb entries: 10022 -> 10022
+Computing bounding-box regression targets...
+bbox target means:
+[[  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]]
+[  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]
+bbox target stdevs:
+[[ 0.          0.          0.          0.        ]
+ [ 0.13144468  0.12530918  0.2497036   0.21615053]]
+[ 0.13144468  0.12530918  0.2497036   0.21615053]
+Normalizing targets
+done
+RoiDataLayer: name_to_top: {'Sig_rfcn_mask_label': 6, 'foreverone': 7, 'bbox_inside_weights': 4, 'labels': 2, 'rois': 1, 'bbox_targets': 3, 'bbox_outside_weights': 5, 'data': 0}
+Called with args:
+Namespace(cfg_file='experiments/cfgs/rfcn_alt_opt_5step_ohem.yml', gpu_id=0, imdb_name='voc_2007_trainval', imdb_test_name='voc_2007_test', model_name='residual_pos_neg_attention_18', net_name='ResNet-50', pretrained_model='/net/wujial/py-R-FCN/data/rfcn_models/resnet50_rfcn_final.caffemodel', set_cfgs=None)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 0 RPN, compute normalization means and stds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 1 R-FCN using RPN proposals, init from ImageNet model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+using lilac
+/net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/residual_pos_neg_attention_18/stage1_rfcn_mask_ohem_solver80k120k.pt
+Init model: /net/wujial/py-R-FCN/data/imagenet_models/ResNet-50-model.caffemodel
+RPN proposals: /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+Using config:
+{'DATA_DIR': '/net/wujial/py-R-FCN/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'rfcn_alt_opt_5step_ohem',
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MODELS_DIR': '/net/wujial/py-R-FCN/models/pascal_voc',
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/net/wujial/py-R-FCN',
+ 'TEST': {'AGNOSTIC': True,
+          'BBOX_REG': True,
+          'HAS_RPN': False,
+          'MAX_SIZE': 1000,
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'rpn',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'SCALES': [400],
+          'SVM': False},
+ 'TRAIN': {'AGNOSTIC': True,
+           'ASPECT_GROUPING': True,
+           'BATCH_SIZE': -1,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': False,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'FG_FRACTION': 0.5,
+           'FG_THRESH': 0.5,
+           'H': 15,
+           'HAS_RPN': False,
+           'IMS_PER_BATCH': 1,
+           'MAX_SIZE': 1000,
+           'PROPOSAL_METHOD': 'rpn',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_NORMALIZE_MEANS': [0.00013977,
+                                   0.00940836,
+                                   -0.02203678,
+                                   -0.03512152],
+           'RPN_NORMALIZE_STDS': [0.11800866,
+                                  0.12171428,
+                                  0.33160738,
+                                  0.43583021],
+           'RPN_NORMALIZE_TARGETS': True,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SAVE_RESULT': 10000,
+           'SCALES': [400],
+           'SNAPSHOT_INFIX': 'stage1',
+           'SNAPSHOT_ITERS': 5000,
+           'USE_FLIPPED': True,
+           'USE_PREFETCH': False,
+           'W': 15,
+           'hidden_size': 8,
+           'mask_num': 25},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: rpn
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /net/wujial/py-R-FCN/data/cache/voc_2007_trainval_gt_roidb.pkl
+loading /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+done
+Preparing training data...
+done
+Output will be saved to `/net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval`
+Filtered 0 roidb entries: 10022 -> 10022
+Computing bounding-box regression targets...
+bbox target means:
+[[  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]]
+[  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]
+bbox target stdevs:
+[[ 0.          0.          0.          0.        ]
+ [ 0.13144468  0.12530918  0.2497036   0.21615053]]
+[ 0.13144468  0.12530918  0.2497036   0.21615053]
+Normalizing targets
+done
+RoiDataLayer: name_to_top: {'Sig_rfcn_mask_label': 6, 'foreverone': 7, 'bbox_inside_weights': 4, 'labels': 2, 'rois': 1, 'bbox_targets': 3, 'bbox_outside_weights': 5, 'data': 0}
+Called with args:
+Namespace(cfg_file='experiments/cfgs/rfcn_alt_opt_5step_ohem.yml', gpu_id=0, imdb_name='voc_2007_trainval', imdb_test_name='voc_2007_test', model_name='residual_pos_neg_attention_18', net_name='ResNet-50', pretrained_model='/net/wujial/py-R-FCN/data/rfcn_models/resnet50_rfcn_final.caffemodel', set_cfgs=None)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 0 RPN, compute normalization means and stds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stage 1 R-FCN using RPN proposals, init from ImageNet model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+using lilac
+/net/wujial/py-R-FCN/models/pascal_voc/ResNet-50/residual_pos_neg_attention_18/stage1_rfcn_mask_ohem_solver80k120k.pt
+Init model: /net/wujial/py-R-FCN/data/imagenet_models/ResNet-50-model.caffemodel
+RPN proposals: /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+Using config:
+{'DATA_DIR': '/net/wujial/py-R-FCN/data',
+ 'DEDUP_BOXES': 0.0625,
+ 'EPS': 1e-14,
+ 'EXP_DIR': 'rfcn_alt_opt_5step_ohem',
+ 'GPU_ID': 0,
+ 'MATLAB': 'matlab',
+ 'MODELS_DIR': '/net/wujial/py-R-FCN/models/pascal_voc',
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/net/wujial/py-R-FCN',
+ 'TEST': {'AGNOSTIC': True,
+          'BBOX_REG': True,
+          'HAS_RPN': False,
+          'MAX_SIZE': 1000,
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'rpn',
+          'RPN_MIN_SIZE': 16,
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'SCALES': [400],
+          'SVM': False},
+ 'TRAIN': {'AGNOSTIC': True,
+           'ASPECT_GROUPING': True,
+           'BATCH_SIZE': -1,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': False,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'FG_FRACTION': 0.5,
+           'FG_THRESH': 0.5,
+           'H': 15,
+           'HAS_RPN': False,
+           'IMS_PER_BATCH': 1,
+           'MAX_SIZE': 1000,
+           'PROPOSAL_METHOD': 'rpn',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_MIN_SIZE': 16,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_NORMALIZE_MEANS': [0.00013977,
+                                   0.00940836,
+                                   -0.02203678,
+                                   -0.03512152],
+           'RPN_NORMALIZE_STDS': [0.11800866,
+                                  0.12171428,
+                                  0.33160738,
+                                  0.43583021],
+           'RPN_NORMALIZE_TARGETS': True,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 300,
+           'RPN_PRE_NMS_TOP_N': 6000,
+           'SAVE_RESULT': 10000,
+           'SCALES': [400],
+           'SNAPSHOT_INFIX': 'stage1',
+           'SNAPSHOT_ITERS': 5000,
+           'USE_FLIPPED': True,
+           'USE_PREFETCH': False,
+           'W': 15,
+           'hidden_size': 8,
+           'mask_num': 25},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: rpn
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /net/wujial/py-R-FCN/data/cache/voc_2007_trainval_gt_roidb.pkl
+loading /net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval/stage1_rpn_final_proposals.pkl
+done
+Preparing training data...
+done
+Output will be saved to `/net/wujial/py-R-FCN/output/rfcn_alt_opt_5step_ohem/voc_2007_trainval`
+Filtered 0 roidb entries: 10022 -> 10022
+Computing bounding-box regression targets...
+bbox target means:
+[[  0.00000000e+00   0.00000000e+00   0.00000000e+00   0.00000000e+00]
+ [  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]]
+[  1.03960043e-10   6.22199374e-03   2.07805908e-02   5.24860248e-02]
+bbox target stdevs:
+[[ 0.          0.          0.          0.        ]
+ [ 0.13144468  0.12530918  0.2497036   0.21615053]]
+[ 0.13144468  0.12530918  0.2497036   0.21615053]
+Normalizing targets
+done
+RoiDataLayer: name_to_top: {'Sig_rfcn_mask_label': 6, 'foreverone': 7, 'bbox_inside_weights': 4, 'labels': 2, 'rois': 1, 'bbox_targets': 3, 'bbox_outside_weights': 5, 'data': 0}
+Loading pretrained model weights from /net/wujial/py-R-FCN/data/imagenet_models/ResNet-50-model.caffemodel
+Solving...
